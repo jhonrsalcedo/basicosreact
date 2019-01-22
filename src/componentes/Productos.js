@@ -9,7 +9,13 @@ class Productos extends Component{
                 {/* para pasarle el arreglo de productos a componentes producto se utiliza this ya que es una clase seguido de props */}
                 {console.log(this.props.productos)}
                 {/* Para imprimir un objeto se utilizar Object keys para poder iterar en cada una de las llaves */}
-                <Producto />
+                {Object.keys(this.props.productos).map(key =>(
+                    <Producto 
+                        key ={key}
+                        producto = {this.props.productos[key]}
+                    />
+                ))}
+                
             </div>
         )
     }

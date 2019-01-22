@@ -8,12 +8,17 @@ import Footer from './Footer';
 // no pudees usar los metodos de ciclo de vida componentDidMount, ComponentDidUpdate y no tienen state no puedes usar refs
 
 
-//Notas: los props se definen en el componente principal
+//Notas: los props se definen en el componente principal Aplicacion y se llaman desde los otro componentes
 
 class Aplicacion extends Component{
 
-    render(){
-          // creamos un arreglos de productos
+    // manejar los state, se puede utlizar el constructo( no se recomienda sobrecargarlo mucho)
+    state ={
+        // lo dejamos vacio para simular y luego lo llenamos
+        productos:[]
+    };
+
+    componentDidMount(){
         const productos = [
             {nombre: 'Libro', precio: 200}, 
             {nombre: 'Disco de musica', precio: 100}, 
@@ -21,6 +26,17 @@ class Aplicacion extends Component{
             {nombre: 'Reproducto Musical', precio: 1500}, 
             {nombre: 'Album Ed. Especial', precio: 500} 
         ]
+
+        setTimeout( () =>{
+            this.setState({
+                productos: productos
+            });
+        }, 4000);
+    }
+
+    render(){
+          // creamos un arreglos de productos
+      
        return (
         <div>
             <Header 
@@ -28,7 +44,7 @@ class Aplicacion extends Component{
             />
            
             <Productos
-                productos={productos}
+                productos={this.state.productos}
             />
             <Footer />
         </div>
