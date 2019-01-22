@@ -28,6 +28,7 @@ class Aplicacion extends Component{
         ]
 
         setTimeout( () =>{
+            //reescribir el state se utiliza setState
             this.setState({
                 productos: productos
             });
